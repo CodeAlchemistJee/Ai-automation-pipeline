@@ -1,0 +1,6 @@
+# backend/enrichment/enrich.py
+
+def enrich_data(endpoint):
+    endpoint["rating"] = 4.5
+    endpoint["tags"] = ["public", "api"]
+    return endpoint

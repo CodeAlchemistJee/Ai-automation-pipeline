@@ -1,0 +1,12 @@
+# backend/template/template_generator.py
+
+def generate_template(endpoint):
+    return {
+        "url": endpoint["path"],
+        "method": endpoint["method"],
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "body": {},
+        "description": endpoint.get("description", "")
+    }

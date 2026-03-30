@@ -1,0 +1,12 @@
+def categorize_api(api_name):
+    categories = {
+        "weather": ["weather", "temperature"],
+        "finance": ["stock", "crypto"],
+        "ai": ["ml", "ai", "model"]
+    }
+
+    for category, keywords in categories.items():
+        if any(word in api_name.lower() for word in keywords):
+            return category
+
+    return "general"

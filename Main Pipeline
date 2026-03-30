@@ -1,0 +1,24 @@
+# backend/main.py
+
+from parser.openapi_parser import parse_openapi
+from categorizer.categorizer import categorize_api
+from enrichment.enrich import enrich_data
+from template.template_generator import generate_template
+
+def run_pipeline(file_path):
+    endpoints = parse_openapi(file_path)
+
+    results = []
+
+    for ep in endpoints:
+        ep["category"] = categorize_api(ep["summary"])
+        ep = enrich_data(ep)
+        template = generate_template(ep)
+        results.append(template)
+
+    return results
+
+
+if __name__ == "__main__":
+    output = run_pipeline("../data/sample_api.json")
+    print(output)
